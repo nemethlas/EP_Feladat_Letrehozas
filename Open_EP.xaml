@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Open_EP" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1231.2,826.4" sap2010:WorkflowViewState.IdRef="Open_EP_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Open_EP" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1231.2,1387.2" sap2010:WorkflowViewState.IdRef="Open_EP_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -29,10 +29,12 @@
       <x:String>UiPath.UIAutomationNext.Activities</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
-    </sco:Collection>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -56,26 +58,71 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-    </sco:Collection>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Open_EP" sap:VirtualizedContainerService.HintSize="475.2,395.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Open_EP" sap:VirtualizedContainerService.HintSize="600,1322.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: enet" sap:VirtualizedContainerService.HintSize="433.6,302.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="733cf70b-1ee9-445c-988c-6703685c339e" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: enet" sap:VirtualizedContainerService.HintSize="558.4,1229.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="733cf70b-1ee9-445c-988c-6703685c339e" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,85.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="524.8,1012.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="b_ep_open" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:UiElementExists DisplayName="Element Exists 'A  /'" Exists="[b_ep_open]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e96e38e2-f6fc-4780-bb6c-b00a4c39efa2" InformativeScreenshot="40cbab03d6b2b4954ee189f13abd11f8" Selector="&lt;html app='chrome.exe' url='http://ep.enet.hu/my/page' /&gt;&lt;webctrl parentid='top-menu-container' parentclass='with-easy-submenu' class='icon icon-dashboard my-page selected' /&gt;" TimeoutMS="1000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[b_ep_open]" sap:VirtualizedContainerService.HintSize="483.2,772" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,581.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Be van jelentkezve az EP-be.&quot;]" />
+                  <uix:NClick ClickType="Single" DisplayName="Click 'A /'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="733cf70b-1ee9-445c-988c-6703685c339e" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://ep.enet.hu/" DesignTimeRectangle="32, 137, 143, 75" FriendlyName="'A /'" FullSelectorArgument="&lt;webctrl tag='A' parentid='logo' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='A' parentid='logo' type='' class='' aaname='Kattintson a saját oldal megtekintéséhez.' /&gt;" Guid="15bbe4f2-011f-4256-8159-e6aa7dabf488" ImageBase64="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" InformativeScreenshot="0e58230d31c9b2ecfbae79d50e6c289d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' url='http://ep.enet.hu/' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'A /logout'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="733cf70b-1ee9-445c-988c-6703685c339e" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://ep.enet.hu/" DesignTimeRectangle="1726, 151, 43, 46" FriendlyName="'A /logout'" FullSelectorArgument="&lt;webctrl parentid='loggedas_controls' tag='A' class='icon icon-power' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='loggedas_controls' tag='A' type='' class='icon icon-power' aaname='' /&gt;" Guid="5127a44b-0595-4d0a-bd3e-964257823db5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAyCAYAAADMb4LpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIZSURBVGhD7ZY9j0FBFIb3z4lCJZGolRL/QBBBpSK+CoVGrVYoBI1Kq/ADdBIRX+Fs3rNzd+feXJaZtWc3mSe5mZhzzniMccwb/WOcvBROXgonL4WTl8LJS+HkpXDyUjh5KV4mX6vVKBKJ8PgqnPz1euVH55Z8WK4p1vLn85l6vR7l83na7XZqNlx+u91SLpfjfNTZYiUPgVarxZJ4ms0mXS4XjgXlMY+4l4s62w9gJT+bzSgWi1E0GqVOp+OTCdv54/FI7Xab81GHehuM5TebDWUyGRYsFAq03+9V5IMweYA85COGeqxjirH8fD7nHUwkErRardTsF7fkAfJRh3qsY4qxfLfbZblSqUSn00nNfnFPHvmoQxzrmGIkfzgcuGvgzfv9vpr1c08eoA5xrIP1TDCSx7nNZrP85oPBQM36+U4edYhjneDv5VGM5PWv/dbOj0YjbocYwxDbeeCd+WKxyC3wGfQPj95virG8123i8Tgtl0s1+xh6t5lOp2r2eYzl9T5fLpcf3n38kVWrVa5Lp9MyfR6Mx2PePTzBf9gwEMe9xqsZDocqYoaVPGT0u02lUqH1eq2ifjCPuJcrfrcB6BT1ep13ElIYcRwajQYLYsRrPY580w6jYy0PcD+fTCaUTCY/dzbsQRx5f+Y+r4NjsFgs+OaI3U6lUjziNeZtj0mQH5X/bZy8FE5eCicvhZOXwslL4eRlIHoHNJOS4dlFsNoAAAAASUVORK5CYII=" InformativeScreenshot="b2f1a1c3ae6717a1b7a091a62efc34a7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' url='http://ep.enet.hu/' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
